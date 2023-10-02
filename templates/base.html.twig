@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Manga MarketPlace{% endblock %}</title>
+        <meta name="description" content="Explorez et découvrez un vaste univers de mangas sur Manga MarketPlace. Trouvez les dernières éditions, des classiques intemporels et bien plus encore. La meilleure destination pour les passionnés de mangas.">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/litera/bootstrap.min.css" integrity="sha512-KP4PB5XMUbJDDNGYTEzb/3xbfrqLtC2Whm5pMonJoFV7klC3+crH3WZA0sc1Ms2EZycfD2WCS//OHNEAGWP+wA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="icon" href="{{ asset('assets/images/logo.png') }}" type="image/x-icon" />
+        <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/styles/about.css') }}">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+
+    <body>
+    
+        <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path("home") }}">
+                <img src="../assets/video/logo.gif" alt="Logo" class="navbar-logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{path("home")}}">Accueil</a>
+                    </li>
+                <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-warning position-relative" href="{{ path('app_cart') }}">
+                            <i class="fab fa-opencart fa-lg"></i>
+                            {% if app.session.get('qt') > 0 %}
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger ">
+                                    {{ app.session.get('qt') }}+
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            {% endif %}
+                        </a>
+                        <li class="nav-item">
+                        <a class="nav-link active" href="{{path("home")}}#mangas">Mangas</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                          <a class="nav-link" href="{{ path('vendre_produit') }}">Vendre</a>
+                    </li>
+                    <li class="nav-item">
+                          <a class="nav-link" href="{{ path('about') }}">Qui sommes-nous?</a>
+                    </li>
+                    <li class="nav-item">
+                          <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                    </li>
+                    
+                    
+                        {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link text-danger backoffice-link" href="{{ path('admin') }}">BackOffice</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <div class="d-flex">
+                    {% if app.user %}
+                    <div class="dropdown me-4">
+                        <a class="dropdown-toggle btn text-warning" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-id-card fa-lg"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{path('app_compte')}}">Mes commandes</a></li> 
+                            {# <li><a class="dropdown-item" href="{{ path('modifier_produit', {'id': produit.id}) }}">Modifier le produit</a></li> #}
+                           {# <li><a class="dropdown-item" href="{{ path('compte_edit') }}">Modifier le profil</a></li> #}
+                        </ul>
+                    </div>
+                    <a href="{{ path('app_logout')}}" class="btn btn-danger me-2 logout-button">Déconnexion</a>
+                    {% else %}
+                    <a type="button" class="btn btn-outline-secondary ms-2 register-button" href="{{path("inscription_afficher")}}">Inscription</a>
+                    <button type="button" class="btn btn-outline-secondary ms-2 login-button" data-bs-toggle="modal" data-bs-target="#connexion">Connexion</button>
+                    {% endif %}
+                    </div>
+            </li>
+                    
+            </div>
+        </div>
+    </nav>
+
+
+    {# Modale #}
+    {# register #}
+    {# <div class="modal fade" id="inscription" tabindex="-1" aria-labelledby="inscriptionLabel" aria-hidden="true">>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        <div class="modal-body border border-primary rounded m-0 p-2"> #}
+        {# <div class="p-3  rounded">
+            {{ render(controller('App\\Controller\\RegistrationController::afficherFormulaire')) }}
+            </div> #}
+        </div>
+        </div>
+    </div>
+    </div>
+    {# login #}
+    <div class="modal fade" id="connexion" tabindex="-1" aria-labelledby="connexionLabel" aria-hidden="true">>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        <div class="modal-body border border-primary rounded m-0 p-2">
+        <div class="p-3  rounded">
+            <form method="post" action="{{path('luffy')}}">
+
+                <h1 class="h3 mb-3 font-weight-normal text-center">Connexion</h1>
+                <label for="inputEmail">Email</label>
+                <input type="email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                #}
+
+                <button class="btn btn-lg btn-primary mt-3" type="submit">
+                    Se connecter
+                </button>
+            </form>
+            </div>
+        </div> 
+        </div>
+    </div>
+</div>
+</div>
+    {# <footer class='footer'>Copyright &copy; 2023 - Manga MarketPlace - Tous droits réservés.</footer> #}
+    {# <footer id="fixed-pages-footer">Copyright &copy; 2023 - Manga MarketPlace - Tous droits réservés.</footer> #}
+    <footer id="homepage-footer">Copyright &copy; 2023 - Manga MarketPlace - Tous droits réservés. 
+        <a class="dropdown-item text-primary" href="{{ path('rgpd') }}">Notre Politique de Confidentialité</a>
+    </footer>
+
+      {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{label}} text-center mt-2 mb-2">{{ message }}</div>
+        {% endfor %}{% endfor %}
+        {% block body %}{% endblock %}
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+         <script src="../assets/js/app.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+
+
+</html>

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mettre en vente un manga{% endblock %}
+
+
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+    {% endfor %}
+
+    
+    <div class="container mt-5">
+    <h1>Mettre en vente un manga</h1>
+        {% if app.user %}
+        {% else %}
+            <a href="{{path('luffy')}}" class="btn btn-dark">se connecter</a> pour vendre.
+        {% endif %}
+
+
+        {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+        <div class="mb-3">
+            {{ form_row(form.titre, {'label': 'Titre du manga', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.auteur, {'label': 'Auteur', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.description, {'label': 'Description', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.prix, {'label': 'Prix', 'attr': {'class': 'form-control'}}) }} 
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.stock, {'label': 'Stock', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.categorie, {'label': 'Catégorie', 'attr': {'class': 'form-select'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.photo, {'label': 'Photo', 'attr': {'class': 'form-control-file'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.editeur, {'label': 'Éditeur', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        {% if app.user %}
+        <button type="submit" class="btn btn-primary">Mettre en vente</button>
+        {{ form_end(form) }}
+        {% else %}
+            <a href="{{path('luffy')}}" class="btn btn-dark">se connecter</a> pour vendre.
+        {% endif %}
+        
+    </div>
+    <div style="height: 200px;"></div>
+{% endblock %}

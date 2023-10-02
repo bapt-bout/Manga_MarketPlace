@@ -1,0 +1,204 @@
+/* Réinitialisation des styles par défaut du navigateur */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+  
+
+
+/* Style de base pour le corps de la page */
+body {
+    
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    font-size: 20px;
+    
+}
+
+/* Style de base pour les liens */
+a {
+    text-decoration: none;
+    color: #007bff; /* Couleur des liens */
+    transition: color 0.3s ease; /* Transition de couleur au survol */
+}
+
+a:hover {
+    color: #0056b3; /* Couleur des liens au survol */
+}
+
+/* Style de base pour les en-têtes */
+h1, h2, h3, h4, h5 {
+    margin-bottom: 1rem;
+}
+
+/* Style de base pour les boutons */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Couleur de fond des boutons */
+    color: #fff; /* Couleur du texte des boutons */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition de couleur de fond au survol */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Couleur de fond des boutons au survol */
+}
+
+/* Style de base pour les conteneurs */
+.container {
+    max-width: 1200px; /* Largeur maximale du conteneur principal */
+    margin: 0 auto; /* Centrage horizontal */
+    padding: 20px;
+}
+
+/* Style de base pour les sections */
+.section {
+    padding: 40px 0;
+}
+
+/* Style de base pour les grilles (utilisez flexbox ou CSS Grid) */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px; /* Espacement négatif pour gérer les marges internes */
+}
+
+.col {
+    flex: 1;
+    padding: 10px; /* Marge interne pour les colonnes */
+}
+
+/* Style de base pour les images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Style de base pour les listes non ordonnées et ordonnées */
+ul, ol {
+    margin: 1rem 0;
+    padding: 0 0 0 20px; /* Ajoute une indentation à gauche */
+}
+
+/* Style de base pour les éléments de formulaire */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style de base pour les messages d'erreur */
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
+.navbar-logo {
+    width: 100px; /* Largeur du logo */
+    height: 100px; /* Hauteur du logo */
+}
+
+.register-button {
+    /* Styles CSS pour le bouton d'inscription */
+    color: #ff9900;
+    /* Autres styles personnalisés */
+}
+
+.login-button {
+    /* Styles CSS pour le bouton de connexion */
+    color: #0077b3;
+    /* Autres styles personnalisés */
+}
+
+.user-account-button {
+    /* Styles CSS pour le bouton "Mon compte" */
+    color: #33cc33;
+    /* Autres styles personnalisés */
+}
+
+.logout-button {
+    /* Styles CSS pour le bouton de déconnexion */
+    color: #ffffff;
+    /* Autres styles personnalisés */
+}
+
+
+
+
+/* Styles pour les tablettes */
+@media (min-width: 768px) {
+    body {
+      font-size: 18px;
+    }
+  }
+  
+  /* Styles pour les ordinateurs de bureau */
+  @media (min-width: 992px) {
+    body {
+      font-size: 20px;
+    }
+  }
+  
+  /* Styles pour les grands écrans (ex. : téléviseurs) */
+  @media (min-width: 1200px) {
+    body {
+      font-size: 22px;
+    }
+  }
+  
+  /* Styles pour rendre les images responsives */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .navbar-nav .nav-item {
+    text-align: center;
+    }
+  /* Styles pour réorganiser les éléments de la navigation sur mobile */
+  @media (max-width: 768px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+  }
+
+ 
+
+/* Styles pour le footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* Couleur de fond du footer */
+    color: #fff; /* Couleur du texte du footer */
+    padding: 10px; /* Espace intérieur du footer */
+    text-align: center;
+    z-index: 999; /* Assurez-vous que le footer est en avant-plan */
+}
+
+#homepage-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Couleur de fond du footer */
+    padding: 10px 0; /* Espacement intérieur du footer */
+    z-index: 999; /* Assurez-vous que le footer est en avant-plan */
+  }
+
+
+  

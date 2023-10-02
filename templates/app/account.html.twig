@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h3 class="text-center my-4">Mes Commandes</h3>
+        {% if app.user.commandes %}
+            <div class="row justify-content-md-around p-4" style="width: 60rem;">
+                {% for commande in app.user.commandes %}
+                    <div class="col-md-3 px-3" style="width: 17rem;">
+                        <div class="card mx-0 px-0 my-1 border-secondary shadow {% if commande.etat == 'En cours de traitement' %}border-warning{% elseif commande.etat == 'Envoyé' %}border-primary{% elseif commande.etat == 'Livré' %}border-success{% endif %}" style="width: 17rem;">
+                            <div class="card-header bg-dark text-white text-center"> Date d'enregistrement: {{ commande.dateenregistrement|date("d/m/Y à H:i:s")}} </div>
+                            <div class="card-body text-center" style="width: 17rem;">
+                                <div class="row justify-content-center">
+                                    {% for produit in commande.produits %}
+                                        <div  class="card mx-0 px-0 my-1 border-secondary shadow" style="width: 17rem;" id="mangas">
+                                            <img style="width: 17rem;" class="img-fluid" src="{{ asset("uploads/images/" ~ produit.photo) }}" alt="">
+                                        </div>
+                                    {% endfor %}
+                                </div>   
+                                {% for produit in commande.produits %}
+                                    <hr>
+                                  <div class="card-header text-center">
+                                       {{ produit.titre }} 
+                                    </div>
+
+                                    <p style="width: 17rem;">Nombre de produit : {{ commande.quantite }} </p>
+                                    <p style="width: 17rem;">Prix : {{ commande.montant|number_format(2, '.') }} €</p>
+                                {% endfor %}
+                                <p>Etat: 
+                                    {% if commande.etat == 'en cours de traitement' %}
+                                        <span class="text-warning">En cours de traitement</span>
+                                    {% elseif commande.etat == 'envoyé' %}
+                                        <span class="text-primary">Envoyé</span>
+                                    {% elseif commande.etat == 'livré' %}
+                                        <span class="text-success">Livré</span>
+                                    {% endif %}
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    <div style="height: 200px;"></div>
+
+        {% else %}
+            <h4 class="text-center mt-5">Vous n'avez pas encore passé de commande</h4>
+        {% endif %}
+    </div>
+
+{% endblock %}

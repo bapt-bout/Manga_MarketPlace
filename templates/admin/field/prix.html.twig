@@ -1,0 +1,11 @@
+{# 
+{% for produit in commande.produits %}
+    {% block field_prix_widget %}
+        {% set multiply_by_100 = field_options.custom_options.multiply_by_100 ?? false %}
+        {% if multiply_by_100 %}
+            {{ produit.prix * 100 }}
+        {% else %}
+            {{ produit.prix }}
+        {% endif %}
+    {% endblock %}
+{% endfor %} #}

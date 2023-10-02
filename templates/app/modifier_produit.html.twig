@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le produit{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Modifier le produit</h1>
+
+        {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_row(form.id, {'label': 'ID', 'attr': {'class': 'form-control', 'readonly': true}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.titre, {'label': 'Titre du manga', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.auteur, {'label': 'Auteur', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.description, {'label': 'Description', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.prix, {'label': 'Prix', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.stock, {'label': 'Stock', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.categorie, {'label': 'Catégorie', 'attr': {'class': 'form-select'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.photo, {'label': 'Photo', 'attr': {'class': 'form-control-file'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.editeur, {'label': 'Éditeur', 'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Modifier le produit</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
