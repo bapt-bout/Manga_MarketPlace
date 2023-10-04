@@ -61,7 +61,6 @@ public function traiterFormulaire(Request $request, UserPasswordHasherInterface 
 
         $entityManager->persist($user);
         $entityManager->flush();
-        // do anything else you need here, like send an email
 
         return $this->redirectToRoute('home'); // Rediriger vers la page d'accueil ou une autre page
     }

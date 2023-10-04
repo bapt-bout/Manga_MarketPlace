@@ -1,6 +1,6 @@
 
 
-// Votre code JavaScript pour la gestion des footers
+// la gestion des footers pour la page d'accueil
 document.addEventListener("DOMContentLoaded", function() {
     // Détection de la page d'accueil
     if (window.location.pathname === "/") {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
   
-  
+  // Affichage ou masque le footer en fonction du défilement
   document.addEventListener("DOMContentLoaded", function() {
     const footer = document.querySelector("footer");
 

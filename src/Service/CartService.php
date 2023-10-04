@@ -59,7 +59,7 @@ class CartService
     }
     public function less($id)
     {
-        //Nous récupérons ou créons une session gâce à la classe RequsStack (service)
+        //Nous récupérons ou créons une session grâce à la classe RequsStack (service)
         $session = $this->rs->getSession();
 
         $cart = $session->get('cart', []);

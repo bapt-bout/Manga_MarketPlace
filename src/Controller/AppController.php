@@ -54,30 +54,6 @@ class AppController extends AbstractController
         return $this->render('contact.html.twig');
     }
 
-    // #[Route('/contact/submit', name: 'contact_submit', methods: ['POST'])]
-    // public function submit(Request $request, MailerInterface $mailer): Response
-    // {
-    //     // Récupérer les données du formulaire
-    //     $name = $request->request->get('name');
-    //     $email = $request->request->get('email');
-    //     $message = $request->request->get('message');
-
-
-    //     // Envoyer l'e-mail
-    //     $email = (new Email())
-    //         ->from($email)
-    //         ->to('baptiste.boutari@gmail.com')
-    //         ->subject('Nouveau message de contact')
-    //         ->html("Nom: $name<br>Email: $email<br>Message: $message");
-
-    //     $mailer->send($email);
-
-    //     // Redirection vers la page de contact avec un message de confirmation
-    //     return $this->redirectToRoute('contact', ['success' => true]);
-    // }
-
-
-    
     #[Route('/compte/commandes', name: 'app_compte')]
     public function compteCommande()
     {
@@ -132,66 +108,4 @@ class AppController extends AbstractController
     }
 
 
-    
-
-    // #[Route("/produit/show/{id}", name: "produit_show")]
-    // public function show(Produit $produit =null) :Response
-    // {
-    //     if($produit == null)
-    //     {
-    //         return $this->redirectToRoute('home');
-    //     }
-    //     return $this->render('app/produit_show.html.twig', [
-    //         'produit' => $produit
-    //     ]);
-    // }
-
-    // #[Route('/modifier-produit/{id}', name: 'modifier_produit')]
-    // public function modifierProduit(Request $request, EntityManagerInterface $entityManager, ProduitRepository $produitRepository): Response
-    // {
-    //     $id = $request->attributes->get('id'); // Récupérer l'ID du produit depuis l'URL
-
-    //     // Récupérer le produit à partir de l'ID
-    //     $produit = $produitRepository->find($id);
-    
-    //     if (!$produit) {
-    //         throw $this->createNotFoundException('Produit non trouvé');
-    //     }
-    //     $form = $this->createForm(ProduitType::class, $produit);
-
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         // Gestion du téléchargement de la photo (si nécessaire)
-    //         $photoFile = $form->get('photo')->getData();
-
-    //         if ($photoFile) {
-    //             $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
-    //             $newFilename = $originalFilename . '-' . uniqid() . '.' . $photoFile->guessExtension();
-
-    //             try {
-    //                 $photoFile->move(
-    //                     $this->getParameter('upload_directory'),
-    //                     $newFilename
-    //                 );
-    //             } catch (FileException $e) {
-    //                 // Gestion de l'erreur de téléchargement ici, par exemple afficher un message d'erreur
-    //             }
-
-    //             $produit->setPhoto($newFilename);
-    //         }
-
-    //         $entityManager->flush();
-
-    //         // Ajouter un message flash de succès
-    //         $this->addFlash('success', 'Le produit a été modifié avec succès !');
-
-    //         return $this->redirectToRoute('home');
-    //     }
-
-    //     return $this->render('app/modifier_produit.html.twig', [
-    //         'form' => $form->createView(),
-    //         'produit' => $produit, // Passer le produit au modèle pour affichage
-    //     ]);
-    // }
 }

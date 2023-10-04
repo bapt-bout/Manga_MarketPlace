@@ -71,8 +71,6 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{path('app_compte')}}">Mes commandes</a></li> 
-                            {# <li><a class="dropdown-item" href="{{ path('modifier_produit', {'id': produit.id}) }}">Modifier le produit</a></li> #}
-                           {# <li><a class="dropdown-item" href="{{ path('compte_edit') }}">Modifier le profil</a></li> #}
                         </ul>
                     </div>
                     <a href="{{ path('app_logout')}}" class="btn btn-danger me-2 logout-button">Déconnexion</a>
@@ -88,16 +86,7 @@
     </nav>
 
 
-    {# Modale #}
-    {# register #}
-    {# <div class="modal fade" id="inscription" tabindex="-1" aria-labelledby="inscriptionLabel" aria-hidden="true">>
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
 
-        <div class="modal-body border border-primary rounded m-0 p-2"> #}
-        {# <div class="p-3  rounded">
-            {{ render(controller('App\\Controller\\RegistrationController::afficherFormulaire')) }}
-            </div> #}
         </div>
         </div>
     </div>
@@ -121,16 +110,6 @@
                     value="{{ csrf_token('authenticate') }}"
                 >
 
-                {#
-                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                    See https://symfony.com/doc/current/security/remember_me.html
-
-                    <div class="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" name="_remember_me"> Remember me
-                        </label>
-                    </div>
-                #}
 
                 <button class="btn btn-lg btn-primary mt-3" type="submit">
                     Se connecter
@@ -142,8 +121,6 @@
     </div>
 </div>
 </div>
-    {# <footer class='footer'>Copyright &copy; 2023 - Manga MarketPlace - Tous droits réservés.</footer> #}
-    {# <footer id="fixed-pages-footer">Copyright &copy; 2023 - Manga MarketPlace - Tous droits réservés.</footer> #}
     <footer id="homepage-footer">Copyright &copy; 2023 - Manga MarketPlace - Tous droits réservés. 
         <a class="dropdown-item text-primary" href="{{ path('rgpd') }}">Notre Politique de Confidentialité</a>
     </footer>
