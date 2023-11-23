@@ -61,6 +61,7 @@ public function traiterFormulaire(Request $request, UserPasswordHasherInterface 
 
         $entityManager->persist($user);
         $entityManager->flush();
+        $this->addFlash('success', 'Inscription réussie. Bienvenue !');
 
         return $this->redirectToRoute('home'); // Rediriger vers la page d'accueil ou une autre page
     }

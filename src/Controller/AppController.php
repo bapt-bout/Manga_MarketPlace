@@ -48,10 +48,28 @@ class AppController extends AbstractController
         return $this->render('app/rgpd.html.twig');
     }
 
+    #[Route('/cgu', name: 'cgu')]
+    public function cgu(): Response
+    {
+        return $this->render('app/cgu.html.twig');
+    }
+
+    #[Route('/cgv', name: 'cgv')]
+    public function cgv(): Response
+    {
+        return $this->render('app/cgv.html.twig');
+    }
+
+    #[Route('/mentions', name: 'mentions')]
+    public function mentions(): Response
+    {
+        return $this->render('app/mentions.html.twig');
+    }
+
     #[Route('/contact', name: 'contact')]
     public function show(): Response
     {
-        return $this->render('contact.html.twig');
+        return $this->render('app/contact.html.twig');
     }
 
     #[Route('/compte/commandes', name: 'app_compte')]

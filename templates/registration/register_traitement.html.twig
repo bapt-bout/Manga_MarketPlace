@@ -25,10 +25,12 @@
             label: 'Mot de passe'
         }) }}
        
-        
+        <div class="form-check mb-3">
+            {{ form_row(registrationForm.accepteConditions) }}
+            {{ form_errors(registrationForm.accepteConditions) }}
+        </div>
         
         <button type="submit" class="btn btn-primary col-md-12">s'inscrire</button>
-    <div style="height: 200px;"></div>
     {{ form_end(registrationForm) }}
     </div>
 </div>

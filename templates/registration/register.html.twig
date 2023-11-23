@@ -1,41 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container w-50 mx-auto mt-5">
+        <div class="p-3 border border-primary rounded m-0 rounded shadow-lg">
+            <h1 class="text-center h3 my-4 pb-4 border-bottom border-dark">Inscription</h1>
 
+            {{ form_start(registrationForm, {'action': path('inscription_traiter')}) }}
+            <div class="row mx-3">
+                <div class="col-md-6">
+                    {{ form_row(registrationForm.pseudo) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(registrationForm.civilite, {
+                        'empty_data': null,
+                        'placeholder': 'Sélectionner une civilité',
+                    }) }}
+                </div>
+                <div class="col-md-6"> 
+                    {{ form_row(registrationForm.nom)}}
+                </div>
+                <div class="col-md-6"> 
+                    {{ form_row(registrationForm.prenom)}}
+                </div>
+                {{ form_row(registrationForm.email)}}
+                {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
 
-    <div class="container w-50  mx-auto mt-5 ">
-    <div class="p-3 border border-primary rounded m-0 rounded shadow-lg">
-    <h1 class="text-center h3 my-4 pb-4 border-bottom border-dark">Inscription</h1>
-    
+                <div class="form-check mb-3">
+                    {{ form_row(registrationForm.accepteConditions) }}
+                    {{ form_errors(registrationForm.accepteConditions) }}
+                </div>
 
-    {{ form_start(registrationForm, {'action': path('inscription_traiter')}) }}
-    <div class="row mx-3">
-    <div class="col-md-6">
-        {{ form_row(registrationForm.pseudo) }}
+                <button type="submit" class="btn btn-primary col-md-12">S'inscrire</button>
+                <div style="height: 30px;"></div>
+            </div>
+            {{ form_end(registrationForm) }}
+        </div>
+        <div style="height: 100px;"></div>
     </div>
-    <div class="col-md-6">
-    {{ form_row(registrationForm.civilite)}}
-    </div>
-    <div class="col-md-6"> 
-    {{ form_row(registrationForm.nom)}}
-    </div>
-    <div class="col-md-6"> 
-    {{ form_row(registrationForm.prenom)}}
-    </div>
-    {{ form_row(registrationForm.email)}}
-        
-    {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-       
-        
-        
-        <button type="submit" class="btn btn-primary col-md-12">S'inscrire</button>
-         <div style="height: 30px;"></div>
-        
-    {{ form_end(registrationForm) }}
-    </div>
-</div>
-    <div style="height: 100px;"></div>
-
 {% endblock %}

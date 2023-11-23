@@ -39,7 +39,7 @@ class ProduitCrudController extends AbstractCrudController
         //     'constraints' => [
         //         new File([
         //             'maxSize' => '1024k',
-        //             'mimeTypes' => ['image/jpeg', 'image/jpg', 'image/pjpeg', 'image/png', 'image/webp'],
+        //             'mimeTypes' => ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
         //             'mimeTypesMessage' => 'Veuillez télécharger une image au format jpg, jpeg, png ou webp',
         //         ]),
         //     ],

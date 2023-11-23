@@ -45,10 +45,11 @@
                         <li class="nav-item">
                         <a class="nav-link active" href="{{path("home")}}#mangas">Mangas</a>
                     </li>
-                    
-                    <li class="nav-item">
-                          <a class="nav-link" href="{{ path('vendre_produit') }}">Vendre</a>
-                    </li>
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('vendre_produit') }}">Vendre</a>
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
                           <a class="nav-link" href="{{ path('about') }}">Qui sommes-nous?</a>
                     </li>
@@ -114,6 +115,7 @@
                 <button class="btn btn-lg btn-primary mt-3" type="submit">
                     Se connecter
                 </button>
+            <a href="{{ path('forgotten_password') }}" class="btn btn-secondary mt-3">Mot de passe oublié</a>
             </form>
             </div>
         </div> 
@@ -121,8 +123,17 @@
     </div>
 </div>
 </div>
-    <footer id="homepage-footer">Copyright &copy; 2023 - Manga MarketPlace - Tous droits réservés. 
-        <a class="dropdown-item text-primary" href="{{ path('rgpd') }}">Notre Politique de Confidentialité</a>
+    <footer id="homepage-footer">
+        Copyright &copy; 2023 - Manga MarketPlace - Tous droits réservés. <br>
+        <a class="footer-link small" href="{{ path('rgpd') }}">Notre Politique de Confidentialité</a>
+        <span class="footer-links">|</span>
+        <a class="footer-link small" href="{{ path('cgu') }}">Conditions Générales d'Utilisation</a>
+        <span class="footer-links">|</span>
+        <a class="footer-link small" href="{{ path('cgv') }}">Conditions Générales de Vente</a>
+        <span class="footer-links">|</span>
+        <a class="footer-link small" href="{{ path('mentions') }}">Mentions Légales</a>
+        <span class="footer-links">|</span>
+        <a class="footer-link small" href="{{ path('about') }}">Qui Sommes-Nous</a>
     </footer>
 
       {% for label, messages in app.flashes %}

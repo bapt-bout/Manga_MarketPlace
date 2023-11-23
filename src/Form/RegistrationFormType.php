@@ -15,6 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class RegistrationFormType extends AbstractType
 {
@@ -25,11 +27,24 @@ class RegistrationFormType extends AbstractType
             ->add('prenom')
             ->add('nom')
             ->add('pseudo')
-            ->add('email')
+            ->add('email', null, [
+                'constraints' => [
+                    new Callback([$this, 'validateEmailDomain']),
+                ],
+            ])
             ->add('civilite', ChoiceType::class, [
                 'choices' => [
                     'Homme' => 'M',
                     'Femme' => 'F',
+                ],
+            ])
+            ->add('accepteConditions', CheckboxType::class, [
+                'label' => "J'accepte les conditions générales d'utilisation",
+                'mapped' => false, // Ne pas lier ce champ à une propriété de l'entité
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez accepter les conditions générales d\'utilisation.',
+                    ]),
                 ],
             ])
             // ->add('date_enregistrement')
@@ -63,9 +78,9 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                     new Regex([
-                        'pattern' => '/^(?=.*[a-z])(?=.*\d)(?=.*[@$!%#*?&])[A-Za-z\d@$!%#*?&]{8,}$/',
+                        'pattern' => '/^(?=.*[a-z])(?=.*\d)(?=.*[@$!%#*?&])[A-Za-z\d@$!%#*?&]{12,}$/',
                         'match' => true,
-                        "message" => 'Votre mot de passe doit contenir au moins un chiffre, un caractère spécial (@$!#%*?&), une lettre minuscule et une lettre majuscule !'
+                        "message" => 'Votre mot de passe doit contenir 12 caratères, avec au moins un chiffre, un caractère spécial (@$!#%*?&), une lettre minuscule et une lettre majuscule'
                     ]),
                 ],
             ])
@@ -77,5 +92,21 @@ class RegistrationFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Membre::class,
         ]);
+    }
+
+
+    public function validateEmailDomain($value, ExecutionContextInterface $context)
+    {
+        $allowedDomains = ['gmail.com', 'yahoo.com', 'yahoo.fr', 'laposte.net', 'hotmail.com', 'icloud.com', 'outlook.com'];
+
+        $emailParts = explode('@', $value);
+        $domain = end($emailParts);
+
+        if (!in_array($domain, $allowedDomains)) {
+            $context
+                ->buildViolation('L\'adresse email doit être valide')
+                ->atPath('email')
+                ->addViolation();
+        }
     }
 }
