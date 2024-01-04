@@ -36,7 +36,7 @@ class MembreCrudController extends AbstractCrudController
             TextField::new('pseudo', 'Pseudo'),  
             TextField::new('nom', 'Nom'),
             TextField::new('prenom', 'Prenom'),
-            ChoiceField::new('civilite')->setChoices(['H' => 'Homme', 'F' => 'Femme']),  
+            ChoiceField::new('civilite')->setChoices(['Homme' => 'H', 'Femme' => 'F']),  
             DateTimeField::new('date_enregistrement')->setFormat('d/M/Y H:m:s')->hideOnForm(),
         ];
     }

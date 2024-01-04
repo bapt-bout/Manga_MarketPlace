@@ -64,8 +64,8 @@ class MembreType extends AbstractType
             ])
             ->add('civilite', ChoiceType::class, [
                 'choices' => [
-                    'Homme' => 'M',
-                    'Femme' => 'F',
+                    'H' => 'H',
+                    'F' => 'F',
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
